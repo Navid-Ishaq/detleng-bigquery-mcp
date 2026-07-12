@@ -1,0 +1,14 @@
+# ==========================================================
+# DeTLeng BigQuery MCP Server
+# Python Dependencies
+# ==========================================================
+
+fastmcp==3.4.2
+
+google-cloud-bigquery>=3.38.0
+
+google-auth>=2.40.3
+
+openai>=2.0.0
+
+python-dotenv>=1.1.1
