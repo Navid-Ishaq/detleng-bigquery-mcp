@@ -21,6 +21,7 @@ This module must NOT contain:
 """
 
 from fastmcp import FastMCP
+from starlette.responses import JSONResponse
 
 from config import (
     APP_NAME,
@@ -39,6 +40,17 @@ from registry import register_mcp_tools
 # =========================================================
 
 mcp = FastMCP(APP_NAME)
+
+
+@mcp.custom_route("/health", methods=["GET"])
+async def health_check(request):
+    """Lightweight HTTP readiness check that does not create an MCP session."""
+
+    return JSONResponse({
+        "status": "ready",
+        "application": APP_NAME,
+        "version": VERSION,
+    })
 
 # =========================================================
 # Health Check
